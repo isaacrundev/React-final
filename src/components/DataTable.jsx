@@ -1,5 +1,6 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import store from "./redux/index";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -22,16 +23,17 @@ const columns = [
   },
 ];
 
-const rows = [
-  {
-    id: 1487834584,
-    title: "docs: updated docs , removed unnecessary imports and empty methods",
-    state: "open",
-    url: "https://api.github.com/repos/angular/angular/issues/48428",
-    createdAt: "2022-12-09T03:00:01Z",
-    updatedAt: "2022-12-10T05:41:53Z",
-  },
-];
+const rows = store.getState();
+// [
+//   {
+//     id: 1487834584,
+//     title: "docs: updated docs , removed unnecessary imports and empty methods",
+//     state: "open",
+//     url: "https://api.github.com/repos/angular/angular/issues/48428",
+//     createdAt: "2022-12-09T03:00:01Z",
+//     updatedAt: "2022-12-10T05:41:53Z",
+//   },
+// ];
 
 export default function DataTable() {
   return (

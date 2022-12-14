@@ -1,6 +1,5 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
-
-const issuesData = [
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+const initialIssueData = [
   {
     id: 1492652302,
     title: "build: update actions/checkout digest to 7dd9e2a",
@@ -19,10 +18,16 @@ const issuesData = [
   },
 ];
 
-const initialState = { issuesData: issuesData };
+export const dataSlice = createSlice({
+  name: "issues",
+  initialIssueData,
+  reducer: {
+    addNew: () => {},
+    edit: () => {},
+    remove: () => {},
+  },
+});
 
-const dataSlice = createSlice({ name: "", id: null, reducer: {} });
-
-const store = configureStore({ reducer: {} });
+const store = configureStore({ reducer: dataSlice.reducer });
 
 export default store;
