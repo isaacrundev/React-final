@@ -1,4 +1,5 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { createStore } from "redux";
+
 const initialIssueData = [
   {
     id: 1492652302,
@@ -18,16 +19,18 @@ const initialIssueData = [
   },
 ];
 
-export const dataSlice = createSlice({
-  name: "issues",
-  initialIssueData,
-  reducer: {
-    addNew: () => {},
-    edit: () => {},
-    remove: () => {},
-  },
-});
+const IssueReducerOptions = { addNew: "ADD_NEW" };
 
-const store = configureStore({ reducer: dataSlice.reducer });
+const IssueReducer = (
+  state = { initialIssueData: initialIssueData },
+  action
+) => {
+  if (action.type === IssueReducerOptions.addNew) {
+    return { state };
+  }
+  return state;
+};
+
+const store = createStore();
 
 export default store;
