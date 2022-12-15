@@ -19,13 +19,11 @@ const initialIssueData = [
   },
 ];
 
-const IssueReducerOptions = { addNew: "ADD_NEW" };
-
 const IssueReducer = (
   state = { initialIssueData: initialIssueData },
   action
 ) => {
-  if (action.type === IssueReducerOptions.addNew) {
+  if (action.type === "ADD_NEW") {
     return { state };
   }
   return state;
