@@ -1,12 +1,14 @@
 import React from "react";
 import { AppBar, Toolbar, Button, Typography } from "@mui/material";
 import SyncIcon from "@mui/icons-material/Sync";
+import { useDispatch } from "react-redux";
 
 export default function Header() {
-  const clickhandler = () => {};
+  const dispatch = useDispatch();
+  const clickhandler = () => {dispatch({type:})};
 
   return (
-    <header>
+    <div>
       <AppBar>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h5">Title Here</Typography>
@@ -16,6 +18,6 @@ export default function Header() {
           </Button>
         </Toolbar>
       </AppBar>
-    </header>
+    </div>
   );
 }

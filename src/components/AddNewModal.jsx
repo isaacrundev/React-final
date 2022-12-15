@@ -4,7 +4,6 @@ import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
 
@@ -29,12 +28,8 @@ export default function AddNewModal() {
         Add New
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Add New Issue</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
-          </DialogContentText>
           <FormControl>
             <TextField
               autoFocus
@@ -75,7 +70,7 @@ export default function AddNewModal() {
             <TextField
               margin="dense"
               id="createdAt"
-              label="Created At"
+              label="Created at"
               type="text"
               fullWidth
               variant="standard"
@@ -83,7 +78,7 @@ export default function AddNewModal() {
             <TextField
               margin="dense"
               id="updatedAt"
-              label="Updated At"
+              label="Updated at"
               type="text"
               fullWidth
               variant="standard"

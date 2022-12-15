@@ -26,9 +26,15 @@ const IssueReducer = (
   if (action.type === "ADD_NEW") {
     return { state };
   }
+  if (action.type === "EDIT") {
+    return { state };
+  }
+  if (action.type === "REMOVE") {
+    return { state };
+  }
   return state;
 };
 
-const store = createStore();
+const store = createStore(IssueReducer);
 
 export default store;
