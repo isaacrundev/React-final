@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import { TextField } from "@mui/material";
+import { useSelector } from "react-redux";
 
 export default function Search() {
-  const [input, setInput] = useState("");
+  const [searchInput, setSearchinput] = useState("");
+
+  const selector = useSelector((state) => state);
+
   const changeHandler = (e) => {
-    setInput(e.target.value);
+    setSearchinput(e.target.value);
+    const filtered = selector.filter((item) =>
+      item.map((i) => i === searchInput)
+    );
+    console.log(filtered);
   };
 
   return (

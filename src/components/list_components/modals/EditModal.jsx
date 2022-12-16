@@ -7,9 +7,18 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
 import EditIcon from "@mui/icons-material/Edit";
+import { useDispatch } from "react-redux";
 
 export default function EditModal() {
   const [open, setOpen] = React.useState(false);
+  const [id, setId] = React.useState("");
+  const [title, setTitle] = React.useState("");
+  const [state, setState] = React.useState("");
+  const [url, setUrl] = React.useState("");
+  const [createdAt, setCreatedAt] = React.useState("");
+  const [updatedAt, setUpdatedAt] = React.useState("");
+
+  const dispatch = useDispatch();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -20,6 +29,10 @@ export default function EditModal() {
   };
 
   const handleSubmit = (e) => {
+    dispatch({
+      action: "EDIT",
+      editData: {},
+    });
     setOpen(false);
   };
 
@@ -33,7 +46,6 @@ export default function EditModal() {
         <DialogContent>
           <FormControl>
             <TextField
-              autoFocus
               margin="dense"
               id="id"
               label="Id"
@@ -41,6 +53,7 @@ export default function EditModal() {
               fullWidth
               variant="standard"
               required={true}
+              // defaultValue={}
             />{" "}
             <TextField
               margin="dense"

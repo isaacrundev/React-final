@@ -8,32 +8,38 @@ import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
 import { useDispatch } from "react-redux";
 
-const eightdigitrandom = () => {
-  Math.floor(10000000 + Math.random() * 90000000);
-};
+const eightdigitrandom = () => Math.floor(10000000 + Math.random() * 90000000);
 
 export default function AddNewModal() {
   const [open, setOpen] = React.useState(false);
+  const [id, setId] = React.useState("");
+  const [title, setTitle] = React.useState("");
+  const [state, setState] = React.useState("");
+  const [url, setUrl] = React.useState("");
+  const [createdAt, setCreatedAt] = React.useState("");
+  const [updatedAt, setUpdatedAt] = React.useState("");
+
   const dispatch = useDispatch();
 
   const handleClickOpen = () => {
     setOpen(true);
+    setId(eightdigitrandom);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     dispatch({
       type: "ADD_NEW",
       newData: {
-        id: 12345678,
-        title: "docs: call interval methods explicitly from window",
-        state: "open",
-        url: "https://api.github.com/repos/angular/angular/issues/48459",
-        createdAt: "2022-12-12T21:05:11Z",
-        updatedAt: "2022-12-13T21:02:45Z",
+        id: id,
+        title: title,
+        state: state,
+        url: url,
+        createdAt: createdAt,
+        updatedAt: updatedAt,
       },
     });
     setOpen(false);
@@ -49,22 +55,25 @@ export default function AddNewModal() {
         <DialogContent>
           <FormControl>
             <TextField
-              autoFocus
               id="id"
               label="Id"
               type="text"
-              value={eightdigitrandom}
+              value={id}
               fullWidth
               variant="standard"
               disabled={true}
             />
             <TextField
+              autoFocus
               id="title"
               label="Title"
               type="text"
               fullWidth
               variant="standard"
               required={true}
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
             />
             <TextField
               id="state"
@@ -73,6 +82,9 @@ export default function AddNewModal() {
               fullWidth
               variant="standard"
               required={true}
+              onChange={(e) => {
+                setState(e.target.value);
+              }}
             />
             <TextField
               id="url"
@@ -80,6 +92,9 @@ export default function AddNewModal() {
               type="text"
               fullWidth
               variant="standard"
+              onChange={(e) => {
+                setUrl(e.target.value);
+              }}
             />
             <TextField
               id="createdAt"
@@ -87,6 +102,9 @@ export default function AddNewModal() {
               type="text"
               fullWidth
               variant="standard"
+              onChange={(e) => {
+                setCreatedAt(e.target.value);
+              }}
             />
             <TextField
               id="updatedAt"
@@ -94,6 +112,9 @@ export default function AddNewModal() {
               type="text"
               fullWidth
               variant="standard"
+              onChange={(e) => {
+                setUpdatedAt(e.target.value);
+              }}
             />
           </FormControl>
         </DialogContent>

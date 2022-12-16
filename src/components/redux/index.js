@@ -40,22 +40,23 @@ const initIssueData = [
 
 // export const crudActions = crudSlice.actions;
 
-const IssueReducer = (state = { issueData: initIssueData }, action) => {
+const IssueReducer = (state = initIssueData, action) => {
   if (action.type === "ADD_NEW") {
-    return { issueData: [...issueData].concat(action.newData) };
+    return [...state, action.newData];
   }
+
   if (action.type === "EDIT") {
-    return { issueData: [...issueData] };
+    return [...state, action.editData];
   }
   if (action.type === "REMOVE") {
     return { issueData: [...issueData] };
   }
   if (action.type === "REFRESH") {
-    return state.issueData;
+    return state;
   }
 
   if (action.type === "SEARCH") {
-    return state;
+    return [...state.filter(action.searchInput)];
   }
   return state;
 };

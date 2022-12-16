@@ -40,7 +40,7 @@ const columns = [
 ];
 
 export default function DataTable() {
-  const issueData = useSelector((state) => state.issueData);
+  const issueData = useSelector((state) => state);
 
   return (
     <div
