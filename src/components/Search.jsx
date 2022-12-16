@@ -9,9 +9,8 @@ export default function Search() {
 
   const changeHandler = (e) => {
     setSearchinput(e.target.value);
-    const filtered = selector.filter((item) =>
-      item.map((i) => i === searchInput)
-    );
+    const filtered = selector.filter((item) => item);
+
     console.log(filtered);
   };
 
