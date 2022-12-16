@@ -18,6 +18,10 @@ export default function RemoveModal() {
     setOpen(false);
   };
 
+  const handleYes = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
@@ -36,7 +40,7 @@ export default function RemoveModal() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Yes</Button>
+          <Button onClick={handleYes}>Yes</Button>
           <Button onClick={handleClose} autoFocus>
             No
           </Button>

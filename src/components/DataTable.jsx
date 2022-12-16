@@ -1,16 +1,17 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import store from "./redux";
 import { useSelector } from "react-redux";
+import EditModal from "./list_components/modals/EditModal";
+import RemoveModal from "./list_components/modals/RemoveModal";
 
 const columns = [
   { field: "id", headerName: "ID", width: 150 },
-  { field: "title", headerName: "Title", width: 300 },
+  { field: "title", headerName: "Title", width: 500 },
   { field: "state", headerName: "State", width: 100 },
   {
     field: "url",
     headerName: "Url",
-    width: 300,
+    width: 400,
   },
   {
     field: "createdAt",
@@ -22,10 +23,24 @@ const columns = [
     headerName: "Updated at",
     width: 100,
   },
+  {
+    field: "edit",
+    headerName: "Edit",
+    width: 150,
+    sortable: false,
+    renderCell: () => {
+      return (
+        <>
+          <EditModal />
+          <RemoveModal />
+        </>
+      );
+    },
+  },
 ];
 
 export default function DataTable() {
-  const issueData = useSelector((state) => state.initialIssueData);
+  const issueData = useSelector((state) => state.issueData);
 
   return (
     <div

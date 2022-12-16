@@ -6,9 +6,15 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
+import { useDispatch } from "react-redux";
+
+const eightdigitrandom = () => {
+  Math.floor(10000000 + Math.random() * 90000000);
+};
 
 export default function AddNewModal() {
   const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -19,6 +25,17 @@ export default function AddNewModal() {
   };
 
   const handleSubmit = (e) => {
+    dispatch({
+      type: "ADD_NEW",
+      newData: {
+        id: 12345678,
+        title: "docs: call interval methods explicitly from window",
+        state: "open",
+        url: "https://api.github.com/repos/angular/angular/issues/48459",
+        createdAt: "2022-12-12T21:05:11Z",
+        updatedAt: "2022-12-13T21:02:45Z",
+      },
+    });
     setOpen(false);
   };
 
@@ -33,16 +50,15 @@ export default function AddNewModal() {
           <FormControl>
             <TextField
               autoFocus
-              margin="dense"
               id="id"
               label="Id"
               type="text"
+              value={eightdigitrandom}
               fullWidth
               variant="standard"
-              required={true}
-            />{" "}
+              disabled={true}
+            />
             <TextField
-              margin="dense"
               id="title"
               label="Title"
               type="text"
@@ -51,7 +67,6 @@ export default function AddNewModal() {
               required={true}
             />
             <TextField
-              margin="dense"
               id="state"
               label="State"
               type="text"
@@ -60,7 +75,6 @@ export default function AddNewModal() {
               required={true}
             />
             <TextField
-              margin="dense"
               id="url"
               label="Url"
               type="text"
@@ -68,7 +82,6 @@ export default function AddNewModal() {
               variant="standard"
             />
             <TextField
-              margin="dense"
               id="createdAt"
               label="Created at"
               type="text"
@@ -76,7 +89,6 @@ export default function AddNewModal() {
               variant="standard"
             />
             <TextField
-              margin="dense"
               id="updatedAt"
               label="Updated at"
               type="text"

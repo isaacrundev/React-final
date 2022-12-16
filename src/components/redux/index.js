@@ -1,6 +1,7 @@
 import { createStore } from "redux";
+// import { createSlice, configureStore } from "@reduxjs/toolkit";
 
-const initialIssueData = [
+const initIssueData = [
   {
     id: 1492652302,
     title: "build: update actions/checkout digest to 7dd9e2a",
@@ -19,18 +20,42 @@ const initialIssueData = [
   },
 ];
 
-const IssueReducer = (
-  state = { initialIssueData: initialIssueData },
-  action
-) => {
+// const crudSlice = createSlice({
+//   name: "crud",
+//   issueData: initIssueData,
+//   reducers: {
+//     refresh(state) {
+//       state.InitIssueData;
+//     },
+//     addNew() {},
+//     edit() {},
+//     remove() {},
+//     searchInput() {},
+//   },
+// });
+
+// const store = configureStore({
+//   reducer: crudSlice.reducer,
+// });
+
+// export const crudActions = crudSlice.actions;
+
+const IssueReducer = (state = { issueData: initIssueData }, action) => {
   if (action.type === "ADD_NEW") {
-    return { state };
+    return { issueData: [...issueData].concat(action.newData) };
   }
   if (action.type === "EDIT") {
-    return { state };
+    return { issueData: [...issueData] };
   }
   if (action.type === "REMOVE") {
-    return { state };
+    return { issueData: [...issueData] };
+  }
+  if (action.type === "REFRESH") {
+    return state.issueData;
+  }
+
+  if (action.type === "SEARCH") {
+    return state;
   }
   return state;
 };

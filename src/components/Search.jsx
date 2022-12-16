@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField } from "@mui/material";
 
 export default function Search() {
-  const changeHandler = () => {};
+  const [input, setInput] = useState("");
+  const changeHandler = (e) => {
+    setInput(e.target.value);
+  };
 
   return (
     <div>
