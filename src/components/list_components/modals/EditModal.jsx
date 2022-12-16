@@ -9,14 +9,14 @@ import FormControl from "@mui/material/FormControl";
 import EditIcon from "@mui/icons-material/Edit";
 import { useDispatch } from "react-redux";
 
-export default function EditModal() {
+export default function EditModal({ rowData }) {
   const [open, setOpen] = React.useState(false);
-  const [id, setId] = React.useState("");
-  const [title, setTitle] = React.useState("");
-  const [state, setState] = React.useState("");
-  const [url, setUrl] = React.useState("");
-  const [createdAt, setCreatedAt] = React.useState("");
-  const [updatedAt, setUpdatedAt] = React.useState("");
+  const [id, setId] = React.useState(rowData?.id);
+  const [title, setTitle] = React.useState(rowData?.title);
+  const [state, setState] = React.useState(rowData?.state);
+  const [url, setUrl] = React.useState(rowData?.url);
+  const [createdAt, setCreatedAt] = React.useState(rowData?.createdAt);
+  const [updatedAt, setUpdatedAt] = React.useState(rowData?.updatedAt);
 
   const dispatch = useDispatch();
 
@@ -28,10 +28,17 @@ export default function EditModal() {
     setOpen(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     dispatch({
       action: "EDIT",
-      editData: {},
+      editData: {
+        id: id,
+        title: title,
+        state: state,
+        url: url,
+        createdAt: createdAt,
+        updatedAt: updatedAt,
+      },
     });
     setOpen(false);
   };
@@ -53,7 +60,8 @@ export default function EditModal() {
               fullWidth
               variant="standard"
               required={true}
-              // defaultValue={}
+              defaultValue={id}
+              disabled={true}
             />{" "}
             <TextField
               margin="dense"
@@ -63,6 +71,10 @@ export default function EditModal() {
               fullWidth
               variant="standard"
               required={true}
+              defaultValue={title}
+              onChange={(e) => {
+                setTitle = e.target.value;
+              }}
             />
             <TextField
               margin="dense"
@@ -72,6 +84,10 @@ export default function EditModal() {
               fullWidth
               variant="standard"
               required={true}
+              defaultValue={state}
+              onChange={(e) => {
+                setState = e.target.value;
+              }}
             />
             <TextField
               margin="dense"
@@ -80,6 +96,10 @@ export default function EditModal() {
               type="text"
               fullWidth
               variant="standard"
+              defaultValue={url}
+              onChange={(e) => {
+                setUrl = e.target.value;
+              }}
             />
             <TextField
               margin="dense"
@@ -88,6 +108,10 @@ export default function EditModal() {
               type="text"
               fullWidth
               variant="standard"
+              defaultValue={createdAt}
+              onChange={(e) => {
+                setCreatedAt = e.target.value;
+              }}
             />
             <TextField
               margin="dense"
@@ -96,6 +120,10 @@ export default function EditModal() {
               type="text"
               fullWidth
               variant="standard"
+              defaultValue={updatedAt}
+              onChange={(e) => {
+                setUpdatedAt = e.target.value;
+              }}
             />
           </FormControl>
         </DialogContent>

@@ -5,34 +5,53 @@ import EditModal from "./list_components/modals/EditModal";
 import RemoveModal from "./list_components/modals/RemoveModal";
 
 const columns = [
-  { field: "id", headerName: "ID", width: 150 },
-  { field: "title", headerName: "Title", width: 500 },
-  { field: "state", headerName: "State", width: 100 },
+  {
+    field: "id",
+    headerName: "ID",
+    // width: 150
+    flex: 1,
+  },
+  {
+    field: "title",
+    headerName: "Title",
+    //  width: 500
+    flex: 1,
+  },
+  {
+    field: "state",
+    headerName: "State",
+    // width: 100
+    flex: 1,
+  },
   {
     field: "url",
     headerName: "Url",
-    width: 400,
+    // width: 400,
+    flex: 1,
   },
   {
     field: "createdAt",
     headerName: "Created at",
-    width: 100,
+    // width: 100,
+    flex: 1,
   },
   {
     field: "updatedAt",
     headerName: "Updated at",
-    width: 100,
+    // width: 100,
+    flex: 1,
   },
   {
     field: "edit",
     headerName: "Edit",
-    width: 150,
+    // width: 150,
+    flex: 1,
     sortable: false,
-    renderCell: () => {
+    renderCell: (issueDataRow) => {
       return (
         <>
-          <EditModal />
-          <RemoveModal />
+          <EditModal rowData={issueDataRow.row} />
+          <RemoveModal rowData={issueDataRow.row} />
         </>
       );
     },

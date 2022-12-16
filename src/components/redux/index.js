@@ -49,14 +49,28 @@ const IssueReducer = (state = initIssueData, action) => {
     return [...state, action.editData];
   }
   if (action.type === "REMOVE") {
-    return { issueData: [...issueData] };
+    return [...state.filter((item) => item.id === action.itemId)];
   }
   if (action.type === "REFRESH") {
     return state;
   }
 
+  // if (action.type === "SEARCH") {
+  //   if (action.searchInput === "") return initIssueData;
+  //   return state.filter((item) => {
+  //     const stringObj = JSON.stringify(item);
+  //     return stringObj.includes(action.searchInput);
+  //   });
+  // }
   if (action.type === "SEARCH") {
-    return [...state.filter(action.searchInput)];
+    if (action.searchInput === "") return initIssueData;
+    return state.filter((item) => {
+      let isMatch = false;
+      Object.values(item).forEach((element) => {
+        if (element.toString().includes(action.searchInput)) isMatch = true;
+      });
+      return isMatch;
+    });
   }
   return state;
 };
