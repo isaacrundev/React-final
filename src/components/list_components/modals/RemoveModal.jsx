@@ -30,7 +30,7 @@ export default function EditModal({ rowData }) {
 
   const handleYes = () => {
     dispatch({
-      action: "REMOVE",
+      type: "REMOVE",
       itemId: id,
     });
     setOpen(false);

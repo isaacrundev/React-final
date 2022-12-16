@@ -46,10 +46,15 @@ const IssueReducer = (state = initIssueData, action) => {
   }
 
   if (action.type === "EDIT") {
-    return [...state, action.editData];
+    return state.map((element) => {
+      if (element.id === action.editData.id) {
+        return action.editData;
+      }
+      return element;
+    });
   }
   if (action.type === "REMOVE") {
-    return [...state.filter((item) => item.id === action.itemId)];
+    return [...state.filter((item) => item.id !== action.itemId)];
   }
   if (action.type === "REFRESH") {
     return state;

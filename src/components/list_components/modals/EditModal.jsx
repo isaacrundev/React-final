@@ -30,7 +30,7 @@ export default function EditModal({ rowData }) {
 
   const handleSubmit = () => {
     dispatch({
-      action: "EDIT",
+      type: "EDIT",
       editData: {
         id: id,
         title: title,
@@ -73,7 +73,7 @@ export default function EditModal({ rowData }) {
               required={true}
               defaultValue={title}
               onChange={(e) => {
-                setTitle = e.target.value;
+                setTitle(e.target.value);
               }}
             />
             <TextField
@@ -86,7 +86,7 @@ export default function EditModal({ rowData }) {
               required={true}
               defaultValue={state}
               onChange={(e) => {
-                setState = e.target.value;
+                setState(e.target.value);
               }}
             />
             <TextField
@@ -98,7 +98,7 @@ export default function EditModal({ rowData }) {
               variant="standard"
               defaultValue={url}
               onChange={(e) => {
-                setUrl = e.target.value;
+                setUrl(e.target.value);
               }}
             />
             <TextField
@@ -110,7 +110,7 @@ export default function EditModal({ rowData }) {
               variant="standard"
               defaultValue={createdAt}
               onChange={(e) => {
-                setCreatedAt = e.target.value;
+                setCreatedAt(e.target.value);
               }}
             />
             <TextField
@@ -122,7 +122,7 @@ export default function EditModal({ rowData }) {
               variant="standard"
               defaultValue={updatedAt}
               onChange={(e) => {
-                setUpdatedAt = e.target.value;
+                setUpdatedAt(e.target.value);
               }}
             />
           </FormControl>
