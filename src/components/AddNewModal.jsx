@@ -7,8 +7,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
 import { useDispatch } from "react-redux";
+import { crudActions } from "./redux/redux-toolkit";
 
-const eightdigitrandom = () => Math.floor(10000000 + Math.random() * 90000000);
+const tenDigitRandom = () => Math.floor(1000000000 + Math.random() * 90000000);
 
 export default function AddNewModal() {
   const [open, setOpen] = React.useState(false);
@@ -23,7 +24,7 @@ export default function AddNewModal() {
 
   const handleClickOpen = () => {
     setOpen(true);
-    setId(eightdigitrandom);
+    setId(tenDigitRandom);
   };
 
   const handleClose = () => {
@@ -31,17 +32,27 @@ export default function AddNewModal() {
   };
 
   const handleSubmit = () => {
-    dispatch({
-      type: "ADD_NEW",
-      newData: {
+    dispatch(
+      crudActions.addNew({
         id: id,
         title: title,
         state: state,
         url: url,
         createdAt: createdAt,
         updatedAt: updatedAt,
-      },
-    });
+      })
+      //   {
+      //   type: "ADD_NEW",
+      //   newData: {
+      //     id: id,
+      //     title: title,
+      //     state: state,
+      //     url: url,
+      //     createdAt: createdAt,
+      //     updatedAt: updatedAt,
+      //   },
+      // }
+    );
     setOpen(false);
   };
 

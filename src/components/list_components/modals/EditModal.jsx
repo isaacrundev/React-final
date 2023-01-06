@@ -8,6 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
 import EditIcon from "@mui/icons-material/Edit";
 import { useDispatch } from "react-redux";
+import { crudActions } from "../../redux/redux-toolkit";
 
 export default function EditModal({ rowData }) {
   const [open, setOpen] = React.useState(false);
@@ -29,17 +30,27 @@ export default function EditModal({ rowData }) {
   };
 
   const handleSubmit = () => {
-    dispatch({
-      type: "EDIT",
-      editData: {
+    dispatch(
+      crudActions.edit({
         id: id,
         title: title,
         state: state,
         url: url,
         createdAt: createdAt,
         updatedAt: updatedAt,
-      },
-    });
+      })
+      //   {
+      //   type: "EDIT",
+      //   editData: {
+      //     id: id,
+      //     title: title,
+      //     state: state,
+      //     url: url,
+      //     createdAt: createdAt,
+      //     updatedAt: updatedAt,
+      //   },
+      // }
+    );
     setOpen(false);
   };
 

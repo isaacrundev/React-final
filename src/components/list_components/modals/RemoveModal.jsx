@@ -8,6 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { useDispatch } from "react-redux";
+import { crudActions } from "../../redux/redux-toolkit";
 
 export default function EditModal({ rowData }) {
   const [open, setOpen] = React.useState(false);
@@ -29,10 +30,13 @@ export default function EditModal({ rowData }) {
   };
 
   const handleYes = () => {
-    dispatch({
-      type: "REMOVE",
-      itemId: id,
-    });
+    dispatch(
+      crudActions.remove(id)
+      //   {
+      //   type: "REMOVE",
+      //   itemId: id,
+      // }
+    );
     setOpen(false);
   };
 

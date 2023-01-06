@@ -2,12 +2,12 @@ import React from "react";
 import { AppBar, Toolbar, Button, Typography } from "@mui/material";
 import SyncIcon from "@mui/icons-material/Sync";
 import { useDispatch } from "react-redux";
-// import { crudActions } from "./redux/index";
+import { crudActions } from "./redux/redux-toolkit";
 
 export default function Header() {
   const dispatch = useDispatch();
   const clickHandler = () => {
-    dispatch({ type: "REFRESH" });
+    dispatch(crudActions.reload());
   };
 
   return (
