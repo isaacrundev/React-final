@@ -54,13 +54,13 @@ const crudSlice = createSlice({
         return isMatch;
       });
 
-      return state.filter((i) => {
-        let isMatch = false;
-        Object.values(i).forEach((element) => {
-          if (element.toString().includes(action.payload)) isMatch = true;
-        });
-        return isMatch;
-      });
+      // return state.filter((i) => {
+      //   let isMatch = false;
+      //   Object.values(i).forEach((element) => {
+      //     if (element.toString().includes(action.payload)) isMatch = true;
+      //   });
+      //   return isMatch;
+      // });
     },
   },
 });
