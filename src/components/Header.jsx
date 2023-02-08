@@ -14,7 +14,7 @@ export default function Header() {
     <>
       <AppBar>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography variant="h5">Title Here</Typography>
+          <Typography variant="h5">Issue Tracking System</Typography>
           <Button variant="contained" onClick={clickHandler}>
             <Typography>Reload</Typography>
             <SyncIcon />
