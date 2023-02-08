@@ -46,18 +46,14 @@ const crudSlice = createSlice({
       return state;
     },
     search(state, action) {
-      console.log("storage: ", storageArray);
-      console.log("action", action.payload);
-      if (state.length === 0) {
-        return storageArray.filter((i) => {
-          let isMatch = false;
-          Object.values(i).forEach((element) => {
-            if (element.toString().includes(action.payload)) isMatch = true;
-          });
-          return isMatch;
+      return storageArray.filter((i) => {
+        let isMatch = false;
+        Object.values(i).forEach((element) => {
+          if (element.toString().includes(action.payload)) isMatch = true;
         });
-      }
-      // if (action.payload === "") return state;
+        return isMatch;
+      });
+
       return state.filter((i) => {
         let isMatch = false;
         Object.values(i).forEach((element) => {
@@ -68,6 +64,11 @@ const crudSlice = createSlice({
     },
   },
 });
+
+// The issue is that the search reducer only returns the initialState array if state.length === 0,
+// which would only occur once when the store is first created and never again.
+// Instead, it should check if the state has not been updated,
+// which can be determined by checking if state is equal to initialState.
 
 const store = configureStore({ reducer: crudSlice.reducer });
 

@@ -6,7 +6,9 @@ import { Box } from "@mui/material";
 
 export default function MainSection() {
   return (
-    <Box sx={{ mt: "5rem", flexDirection: "row" }}>
+    <Box
+      sx={{ mt: "5rem", display: "flex", flexDirection: "column", gap: "1rem" }}
+    >
       <Search />
       <AddNewModal />
       <DataTable />
